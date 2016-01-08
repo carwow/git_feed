@@ -21,3 +21,5 @@ insecure                # Allow all DB writes from clients (for prototyping)
 mquandalle:jade
 msavin:mongol
 materialize:materialize
+bruz:github-api
+http
