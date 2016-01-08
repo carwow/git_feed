@@ -7,7 +7,7 @@ Template.commitList.onCreated(() => {
 
 Template.commitList.helpers({
   commits() {
-    return Commits.find({});
+    return Commits.find({}, {sort: {date: -1}});
   }
 });
 
