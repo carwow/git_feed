@@ -38,7 +38,7 @@ function getCommits() {
 }
 
 Meteor.startup(() => {
-  //Meteor.setInterval(getCommits, 120000);
+  Meteor.setInterval(getCommits, 120000);
   getCommits()
 })
 
