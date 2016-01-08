@@ -20,7 +20,7 @@ function deleteOldCommits(repo) {
 }
 
 function getCommits() {
-  let list = Github.getCommits('quotes_site', function(error, result) {
+  Github.getCommits('quotes_site', function(error, result) {
     if (error) {
       return;
     }
@@ -28,7 +28,7 @@ function getCommits() {
     saveCommits('quotes_site', result);
   })
 
-  list = Github.getCommits('research_site', function(error, result) {
+  Github.getCommits('research_site', function(error, result) {
     if (error) {
       return;
     }
