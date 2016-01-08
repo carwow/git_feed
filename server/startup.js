@@ -20,21 +20,31 @@ function deleteOldCommits(repo) {
 }
 
 function getCommits() {
-  Github.getCommits('quotes_site', function(error, result) {
-    if (error) {
-      return;
-    }
-    deleteOldCommits('quotes_site');
-    saveCommits('quotes_site', result);
-  })
 
-  Github.getCommits('research_site', function(error, result) {
-    if (error) {
-      return;
-    }
-    deleteOldCommits('research_site');
-    saveCommits('research_site', result);
+  // get repos
+  // - get last X commits for each repo and save them
+  let repos = Github.getRepos()
+
+  repos.forEach( repo => {
+    results = Github.getCommits(repo)
+    deleteOldCommits(repo);
+    saveCommits(repo, results);
   })
+  // Github.getCommits('quotes_site', function(error, result) {
+  //   if (error) {
+  //     return;
+  //   }
+  //   deleteOldCommits('quotes_site');
+  //   saveCommits('quotes_site', result);
+  // })
+
+  // Github.getCommits('research_site', function(error, result) {
+  //   if (error) {
+  //     return;
+  //   }
+  //   deleteOldCommits('research_site');
+  //   saveCommits('research_site', result);
+  // })
 }
 
 Meteor.startup(() => {

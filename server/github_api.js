@@ -11,16 +11,16 @@ Github = class Github {
   }
 
   static getCommits(project, callback) {
-    this.callAPI(`https://api.github.com/repos/carwow/${project}/commits`, callback)
-
+    return this.callAPI(`https://api.github.com/repos/carwow/${project}/commits`, callback)
   }
 
   static getRepos(callback) {
     let repos = this.callAPI('https://api.github.com/orgs/carwow/repos', callback)
+    let results = []
     repos.data.forEach(repo =>
-      console.log(repo.name)
+      results.push(repo.name)
     )
-    return
+    return results
   }
 
   static getToken() {
