@@ -10,10 +10,3 @@ Template.commitList.helpers({
     return Commits.find();
   }
 });
-
-Template.commitList.events({
-  'click button'() {
-    // increment the counter when button is clicked
-    Session.set('counter', Session.get('counter') + 1);
-  }
-});
