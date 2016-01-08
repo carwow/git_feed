@@ -1,7 +1,8 @@
 head
   title git_feed 2
+  link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
 body
-  h1 Welcome to Meteor 2!
+  h1 Last changes
   +commitList
 
 template(name='commitList')
@@ -11,9 +12,9 @@ template(name='commitList')
 
 template(name='commitCard')
   li.collection-item.avatar
-    img.circle(src=author.avatar_url, alt='')
+    img.circle(src=showAvatar(author.avatar_url), alt='')
     span.title= author.name
     p!= escapeMessage(message)
 
     a.secondary-content(href='#!')
-      i.material-icons grade
+      = showDate(date)
