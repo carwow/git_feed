@@ -2,5 +2,4 @@ deployment:
   production:
     branch: master
     commands:
-      - git push git@heroku.com:carwow-git-feed.git $CIRCLE_SHA1:refs/heads/master:
-          timeout: 600
+      - git push git@heroku.com:carwow-git-feed.git $CIRCLE_SHA1:refs/heads/master
