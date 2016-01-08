@@ -5,10 +5,15 @@ body
   +commitList
 
 template(name='commitList')
-  each commits
-    +commit
+  ul.collection
+    each commits
+      +commitCard
 
-template(name='commit')
-  p= commit.message
+template(name='commitCard')
+  li.collection-item.avatar
+    img.circle(src=author.avatar_url, alt='')
+    span.title= author.name
+    p!= escapeMessage(message)
 
-
+    a.secondary-content(href='#!')
+      i.material-icons grade

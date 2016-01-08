@@ -10,3 +10,10 @@ Template.commitList.helpers({
     return Commits.find();
   }
 });
+
+Template.commitCard.helpers({
+  escapeMessage(message) {
+    let new_message = message.replace(/\n/g,'<br/>');
+    return new_message
+  }
+});
