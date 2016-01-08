@@ -17,5 +17,6 @@ template(name='commitCard')
 
     a.secondary-content(href='#!')
       = showDate(date)
-    .chip
-      = showRepo(repo)
+    .chip(style = "background-color: {{ strToColor(repo) }} ")
+      .repo-tag= showRepoTag(repo)
+      .repo-name= showRepo(repo)

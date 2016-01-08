@@ -3,6 +3,7 @@
   right: 10px;
   bottom: 10px;
 }
+
 .collection .collection-item {
   margin: 20px;
   border: 1px solid #e0e0e0;
@@ -21,3 +22,13 @@ body {
   background: #00A4ff;
 }
 
+.repo-tag {
+  width: 32px;
+  height: 32px;
+  float: left;
+  font-size: x-large;
+}
+
+.repo-name {
+  float: left;
+}
