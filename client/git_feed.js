@@ -24,5 +24,10 @@ Template.commitCard.helpers({
   },
   showDate(date) {
     return moment(date).format("DD/MM/YYYY HH:MM")
+  },
+  showRepo(repo) {
+    repo = repo.replace(/^(.)/g, function($1) { return $1.toUpperCase() })
+    repo = repo.replace(/[-_]/g," ")
+    return repo
   }
 });
