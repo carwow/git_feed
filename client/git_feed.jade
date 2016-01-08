@@ -2,8 +2,13 @@ head
   title git_feed 2
 body
   h1 Welcome to Meteor 2!
-  +hello
+  +commitList
 
-template(name='hello')
-  button Click Me
-  p You've pressed the button {{counter}} times.
+template(name='commitList')
+  each commits
+    +commit
+
+template(name='commit')
+  p= commit.message
+
+
