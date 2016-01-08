@@ -1,19 +1,7 @@
-Meteor.startup(() => {
-  Meteor.setInterval(getCommits, 60000);
-})
-
-
-function getCommits() {
-  list = Github.getCommits('quotes_site')
-  saveCommits('quotes_site', list);
-
-  list = Github.getCommits('research_site')
-  saveCommits('research_site', list);
-}
-
 function saveCommits(repo, list) {
   list.data.forEach(info => {
-    avatar_url = info.author ? info.author.avatar_url : null;
+    let avatar_url = info.author ? info.author.avatar_url : null;
+
     Commits.insert({
       sha: info.sha,
       author: {
@@ -26,3 +14,31 @@ function saveCommits(repo, list) {
     })
   })
 }
+
+function deleteOldCommits(repo) {
+  Commits.remove({repo: {$eq: repo}})
+}
+
+function getCommits() {
+  let list = Github.getCommits('quotes_site', function(error, result) {
+    if (error) {
+      return;
+    }
+    deleteOldCommits('quotes_site');
+    saveCommits('quotes_site', result);
+  })
+
+  list = Github.getCommits('research_site', function(error, result) {
+    if (error) {
+      return;
+    }
+    deleteOldCommits('research_site');
+    saveCommits('research_site', result);
+  })
+}
+
+Meteor.startup(() => {
+  //Meteor.setInterval(getCommits, 120000);
+  getCommits()
+})
+
