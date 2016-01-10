@@ -49,7 +49,6 @@ Template.commitCard.helpers({
     // the length is greater than six.
     hex += '000000';
     hex = '#'+hex.substring(0, 6);
-    console.log(hex)
     hsv = tinycolor(hex).toHsv();
     hsv.h /= 2;
     hsv.s /= 2;

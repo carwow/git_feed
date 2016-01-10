@@ -2,7 +2,11 @@ head
   title git_feed 2
   link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
 body
+  +header
   +commitList
+
+template(name='header')
+  .header Latest changes
 
 template(name='commitList')
   ul.collection
@@ -10,13 +14,14 @@ template(name='commitList')
       +commitCard
 
 template(name='commitCard')
-  li.collection-item.avatar
-    img.circle(src=showAvatar(author.avatar_url), alt='')
-    span.title= author.name
-    p!= escapeMessage(message)
+  li.commit
+    .collection-item.avatar
+      img.circle(src=showAvatar(author.avatar_url), alt='')
+      span.title= author.name
+      p!= escapeMessage(message)
 
-    a.secondary-content(href='#!')
-      = showDate(date)
-    .chip(style = "background-color: {{ strToColor(repo) }} ")
-      .repo-tag= showRepoTag(repo)
-      .repo-name= showRepo(repo)
+      a.secondary-content(href='#!')
+        = showDate(date)
+      .chip(style = "background-color: {{ strToColor(repo) }} ")
+        .repo-tag= showRepoTag(repo)
+        .repo-name= showRepo(repo)
