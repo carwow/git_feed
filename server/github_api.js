@@ -1,6 +1,7 @@
 Github = class Github {
 
   static callAPI(url, callback) {
+    console.log(`[API] Request to: ${url}`)
     let auth_url = url+`?access_token=${this.getToken()}`
     if (callback) {
       HTTP.get(auth_url, {headers: {'User-Agent': 'none'}}, callback);
