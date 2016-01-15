@@ -1,3 +1,5 @@
+var github_access_token = process.env.GITHUB_ACCESS_TOKEN || Meteor.settings.github_access_token
+
 Github = class Github {
 
   static callAPI(url, callback) {
@@ -24,6 +26,6 @@ Github = class Github {
   }
 
   static getToken() {
-    return Meteor.settings.github_access_token
+    return github_access_token
   }
 }
